@@ -30,15 +30,14 @@ export default function App() {
     <Fragment>
       <NavBar />
       <div className="App">
-          <Switch>
-            <Route exact path="/" render={() => logic.isUserLoggedIn ? <Redirect to="/home" /> : <Redirect to="/welcome" />}/>
-            <Route exact path="/welcome" render = {() => logic.isUserLoggedIn ? <Redirect to="/home" /> : <Welcome/> }/>
-            <Route exact path="/home" render ={() => logic.isUserLoggedIn ? <Home/> : <Redirect to="/welcome" /> }/>
-            <Route path="*"><NoMatch /></Route>
-          </Switch>
+        <Switch>
+          <Route exact path="/" render={() => logic.isUserLoggedIn ? <Redirect to="/home" /> : <Redirect to="/welcome" />}/>
+          <Route exact path="/welcome" render = {() => logic.isUserLoggedIn ? <Redirect to="/home" /> : <Welcome/> }/>
+          <Route exact path="/home" render ={() => logic.isUserLoggedIn ? <Home/> : <Redirect to="/welcome" /> }/>
+          <Route path="*"><NoMatch /></Route>
+        </Switch>
       </div>
-      <button onClick={setVisible}>Loading</button>
-      {isLoading ? <Loading/> : null}
+
     </Fragment>
   );
 }
