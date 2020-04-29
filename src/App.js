@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, Fragment, useState } from 'react';
+import { Route, Redirect, withRouter, Switch  } from "react-router-dom";
+import Welcome from './components/welcome'
+import Home from './components/home'
+import NoMatch from './components/noMatch'
+import NavBar from './components/navbar'
+import logic from './logic'
+import './App.sass';
+import Loading from './components/loading';
 
-function App() {
+export default function App() {
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(()=>{
+    console.log('Is logged in? ' + logic.isUserLoggedIn)
+  },[])
+
+  //AS example
+  const setVisible = (event) => {
+    event.preventDefault()
+    setIsLoading(true)
+    setTimeout(timeLoading, 2500);
+  }
+
+  const timeLoading = () => setIsLoading(false)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <NavBar />
+      <div className="App">
+          <Switch>
+            <Route exact path="/" render={() => logic.isUserLoggedIn ? <Redirect to="/home" /> : <Redirect to="/welcome" />}/>
+            <Route exact path="/welcome" render = {() => logic.isUserLoggedIn ? <Redirect to="/home" /> : <Welcome/> }/>
+            <Route exact path="/home" render ={() => logic.isUserLoggedIn ? <Home/> : <Redirect to="/welcome" /> }/>
+            <Route path="*"><NoMatch /></Route>
+          </Switch>
+      </div>
+      <button onClick={setVisible}>Loading</button>
+      {isLoading ? <Loading/> : null}
+    </Fragment>
   );
 }
 
-export default App;
