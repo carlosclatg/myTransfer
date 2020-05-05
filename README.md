@@ -71,7 +71,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
-#### Parts of the project to be deployed
+#### Parts of the project to be done! TBD
 
 ##### Front
 - Register Page/ Modal + Register Logic
