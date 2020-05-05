@@ -66,3 +66,23 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+
+
+#### Parts of the project to be deployed
+
+##### Front
+- Register Page/ Modal + Register Logic
+- Landing Page
+- Upload and input mail Page + Logic
+- Download page?? Need auth??
+
+##### Back
+- DataBase --> tables: users, routes
+- Controller for persisting file in fs and routes in DB.
+- Controller for creating and updating Users --> Logic +  Encryption + Persistence
+- Authentication Module (at this very first step not authorization) - JWT?
+- Mail Service
+
